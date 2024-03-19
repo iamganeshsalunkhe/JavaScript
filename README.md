@@ -6,13 +6,13 @@ t
 
 ## Here are some important functionality of JavaScript
 ### 1. DataTypes
-1. number for both floating-point and integer numbers,
-2. bigint for integer numbers of arbitrary length,
-3. string for strings,
-4. boolean for logical values: true/false,
-5. null – a type with a single value null, meaning “empty” or “does not exist”,
-6. undefined – a type with a single value undefined, meaning “not assigned”,
-7. object and symbol – for complex data structures and unique identifiers, we haven’t learnt them yet.
+1. number:  for both floating-point and integer numbers,
+2. bigint for integer numbers of arbitrary:  length,
+3. string:  for strings,
+4. boolean: for logical values: true/false,
+5. null: a type with a single value null, meaning “empty” or “does not exist”,
+6. undefined :  a type with a single value undefined, meaning “not assigned”,
+7. object and symbol : for complex data structures and unique identifiers.
  ### 2. Variables
 Can be declared using:
 
