@@ -24,7 +24,7 @@ Can be declared using:
 Letters and digits, but the first character may not be a digit.
 Characters $ and _ are normal, on par with letters.
 Non-Latin alphabets and hieroglyphs are also allowed, but commonly not used.
-###### Variables are dynamically typed.
+#####Variables are dynamically typed.
 
 
 
@@ -32,17 +32,20 @@ Non-Latin alphabets and hieroglyphs are also allowed, but commonly not used.
 ### 3. Functions
 We can define a function in JS in three Types.
 1) Function Declaration:
+
 function showMessage() {
   alert( 'Hello everyone!');
 };
 
 
 2) Function Expression :
+
 let sayHi = function() {
   alert( "Hello eveyone!");
 };
 
 3) Arrow Function(This is also a function expression)
+
 let sayHi = () => alert("Hello everyone!)
 
 #### Difference between Declaration and Expression
@@ -90,7 +93,8 @@ If an error occurs, then the try execution is stopped, and control flows to the 
 #### So, an error inside the try {...} block does not kill the script – we have a chance to handle it in catch.
 
 
-The try...catch construct may have one more code clause:   # finally.
+The try...catch construct may have one more code clause: 
+ # finally.
 
 #### If it exists, it runs in all cases:
 
