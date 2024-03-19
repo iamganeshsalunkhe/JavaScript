@@ -94,7 +94,7 @@ If an error occurs, then the try execution is stopped, and control flows to the 
 
 
 The try...catch construct may have one more code clause: 
- # finally.
+ ### finally.
 
 #### If it exists, it runs in all cases:
 
