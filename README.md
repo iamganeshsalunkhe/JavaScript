@@ -65,3 +65,68 @@ let result = condition ? value1 : value2;
 
 The condition is evaluated: if it’s truthy then value1 is returned, otherwise – value2.
 
+### 5. Try , Catch and Finally  
+
+No matter how great we are at programming, sometimes our scripts have errors. They may occur because of our mistakes, an unexpected user input, an erroneous server response, and for a thousand other reasons.
+
+Usually, a script “dies” (immediately stops) in case of an error, printing it to console.
+
+But there’s a syntax construct try...catch that allows us to “catch” errors so the script can, instead of dying, do something more reasonable.
+try {
+
+  // code...
+
+} catch (err) {
+
+  // error handling
+
+}
+It works like this:
+
+First, the code in try {...} is executed.
+If there were no errors, then catch (err) is ignored: the execution reaches the end of try and goes on, skipping catch.
+If an error occurs, then the try execution is stopped, and control flows to the beginning of catch (err). The err variable (we can use any name for it) will contain an error object with details about what happened.
+
+#### So, an error inside the try {...} block does not kill the script – we have a chance to handle it in catch.
+
+
+The try...catch construct may have one more code clause:   # finally.
+
+#### If it exists, it runs in all cases:
+
+after try, if there were no errors,
+after catch, if there were errors.
+
+
+The code has two ways of execution:
+
+If you answer “Yes” to “Make an error?”, then try -> catch -> finally.
+If you say “No”, then try -> finally.
+
+##### The finally clause is often used when we start doing something and want to finalize it in any case of outcome.
+
+### 6. Promise
+A “producing code” that does something and takes time. For instance, some code that loads the data over a network.
+
+A “consuming code” that wants the result of the “producing code” once it’s ready. Many functions may need that result.
+
+##### A promise is a special JavaScript object that links the “producing code” and the “consuming code” together.
+
+The function passed to new Promise is called the executor.
+
+
+##### let promise = new Promise(function(resolve, reject){// executor (the producing code)});
+
+When the executor obtains the result, be it soon or late, doesn’t matter, it should call one of these callbacks:
+
+resolve(value) — if the job is finished successfully, with result value.
+reject(error) — if an error has occurred, error is the error object.
+
+##### So to summarize: the executor runs automatically and attempts to perform a job. When it is finished with the attempt, it calls resolve if it was successful or reject if there was an error.
+
+
+
+##### The promise object returned by the new Promise constructor has these internal properties:
+
+state — initially "pending", then changes to either "fulfilled" when resolve is called or "rejected" when reject is called.
+result — initially undefined, then changes to value when resolve(value) is called or error when reject(error) is called.
