@@ -134,3 +134,95 @@ reject(error) — if an error has occurred, error is the error object.
 
 state — initially "pending", then changes to either "fulfilled" when resolve is called or "rejected" when reject is called.
 result — initially undefined, then changes to value when resolve(value) is called or error when reject(error) is called.
+
+### 7. Async/ Await
+
+There’s a special syntax to work with promises in a more comfortable fashion, called “async/await”. It’s surprisingly easy to understand and use.
+
+##### Async functions
+Let’s start with the async keyword. It can be placed before a function, like this:
+
+async function f() {
+  return 1;
+  }
+
+The word “async” before a function means one simple thing: a function always returns a promise. Other values are wrapped in a resolved promise automatically.
+
+So, async ensures that the function returns a promise, and wraps non-promises in it. Simple enough, right? But not only that. There’s another keyword, await, that works only inside async functions, and it’s pretty cool.
+
+
+##### Await
+The syntax:
+
+// works only inside async functions
+let value = await promise;
+
+The keyword await makes JavaScript wait until that promise settles and returns its result.
+
+Let’s emphasize: await literally suspends the function execution until the promise settles, and then resumes it with the promise result. That doesn’t cost any CPU resources, because the JavaScript engine can do other jobs in the meantime: execute other scripts, handle events, etc.
+
+It’s just a more elegant syntax of getting the promise result than promise.then. And, it’s easier to read and write.
+
+The async keyword before a function has two effects:
+
+Makes it always return a promise.
+Allows await to be used in it.
+The await keyword before a promise makes JavaScript wait until that promise settles, and then:
+
+If it’s an error, an exception is generated — same as if throw error were called at that very place.
+Otherwise, it returns the result.
+Together they provide a great framework to write asynchronous code that is easy to both read and write.
+
+##### With async/await we rarely need to write promise.then/catch, but we still shouldn’t forget that they are based on promises, because sometimes (e.g. in the outermost scope) we have to use these methods. Also Promise.all is nice when we are waiting for many tasks simultaneously.
+
+
+### Modules
+As our application grows bigger, we want to split it into multiple files, so called “modules”. A module may contain a class or a library of functions for a specific purpose.
+
+For a long time, JavaScript existed without a language-level module syntax. That wasn’t a problem, because initially scripts were small and simple, so there was no need.
+
+But eventually scripts became more and more complex, so the community invented a variety of ways to organize code into modules, special libraries to load modules on demand.
+
+
+##### What is a module?
+A module is just a file. One script is one module. As simple as that.
+
+Modules can load each other and use special directives export and import to interchange functionality, call functions of one module from another one:
+
+export keyword labels variables and functions that should be accessible from outside the current module.
+import allows the import of functionality from other modules.
+
+
+For instance, if we have a file sayHi.js exporting a function:
+
+// 📁 sayHi.js
+export function sayHi(user) {
+  alert(`Hello, ${user}!`);
+}
+
+…Then another file may import and use it:
+
+// 📁 main.js
+import {sayHi} from './sayHi.js';
+
+alert(sayHi); // function...
+sayHi('John'); // Hello, John!
+
+The import directive loads the module by path ./sayHi.js relative to the current file, and assigns exported function sayHi to the corresponding variable.
+
+##### Always “use strict”.
+Modules always work in strict mode. E.g. assigning to an undeclared variable will give an error.
+
+##### Module-level scope
+
+Each module has its own top-level scope. In other words, top-level variables and functions from a module are not seen in other scripts.
+
+###### Modules should export what they want to be accessible from outside and import what they need.
+
+
+
+
+##### In a module, top-level 'this' is undefined.
+
+<img width="287" alt="module" src="https://github.com/iamganeshsalunkhe/JavaScript/assets/143490640/df7565e8-24cd-4d74-95af-c5080d833858">
+
